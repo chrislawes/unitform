@@ -24,7 +24,7 @@ $.fn.unitform = function(options)
 	var config = $.extend({}, defaults, options);
 
 	// base settings
-	var $self = $(this.selector),
+	var $this = $(this.selector),
 		inputType;
 
 
@@ -90,44 +90,55 @@ $.fn.unitform = function(options)
 	----------------------------------------------------------------------------------------------------------*/
 
 	// don't run if none of the elements are on this page
-	if ($self.length)
+	if ($this.length)
 	{
+		
+	//	console.log($this);
 
 		// foreach form element passed in
-		$self.each(function()
+		$this.each(function(i)
 		{
+			
+			// console.log(i);
+			
+			//console.log(this.tagName);
 
 			// if this is a selectbox
-			if (this.is('select'))
+			if (this.tagName === 'SELECT')
 			{
 
 				// change markup helper function
 				select_markup(this);
 
 				// bind change helper function to this
-				this.bind("change", function() // bind change outside of document ready?!
+				// this.bind("change", function()
+				// {
+				// });
+				
+			}
+			else if (this.tagName === 'INPUT')
+			{
+
+				// else if this is a radio
+				if (this.attr('type') === 'radio')
 				{
-				});
 
-			// else if this is a radio
-			}
-			else if (this.is(':radio'))
-			{
+					// change markup helper function
+					radioCheck_markup(this);
 
-				// change markup helper function
-				radioCheck_markup(this);
+					// bind to on change function
 
-				// bind to on change function
+				// else if this is a checkbox
+				}
+				else if (this.attr('type') === 'checkbox')
+				{
 
-			// else if this is a checkbox
-			}
-			else if (this.is(':checkbox'))
-			{
+					// change markup helper function
+					radioCheck_markup(this);
 
-				// change markup helper function
-				radioCheck_markup(this);
-
-				// bind to same on change function
+					// bind to same on change function
+					
+				}
 
 			// else (none of the above) 
 			}
@@ -138,7 +149,7 @@ $.fn.unitform = function(options)
 
 			}
 
-		}
+		});
 
 	}
 
