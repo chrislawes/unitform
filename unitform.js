@@ -24,7 +24,7 @@ $.fn.unitform = function(options)
 	var config = $.extend({}, defaults, options);
 
 	// base settings
-	var $this = $(this.selector),
+	var $self = $(this.selector),
 		inputType;
 
 
@@ -35,12 +35,12 @@ $.fn.unitform = function(options)
 	// change radio/check markup function 
 	// check if already checked (on load) and toggle class
 	// @param {array} selector - jquery selector
-	function radioCheck_markup($selector)
+	function radioCheck_markup(selector)
 	{
 
 
 		// define type of element, used for wrapper claass
-		if (this.is(':radio'))
+		if ($(this).is(':radio'))
 		{
 			inputType = 'radio';
 		}
@@ -50,37 +50,41 @@ $.fn.unitform = function(options)
 		}
 
 		// add wrapper
-		$selector.wrap('<div class="unitform_' + inputType + '"></div>');
+		$(selector).wrap('<div class="unitform_' + inputType + '"><span></span></div>');
 
-		// add styleable elements
-		$selector.append('<span>');
+		// add styleable elements		// 
+				// $(selector).append('<span>');
 
 		// if it's already checked, add checked class
-		if ($selector.is(':checked'))
+		if ($(selector).is(':checked'))
 		{
-			$selector.find('> span').addClass('checked');
+			$(selector).parent('span').addClass('checked');
 		}
 		else
 		{
-			$selector.find('> span').removeClass('checked');
+			$(selector).parent('span').removeClass('checked');
 		}
 
 	}
 
 	// change selectbox markup; add wrapper, span for value (+ span for arrow?)
 	// @param {array} selector - jquery selector
-	function select_markup($selector)
+	function select_markup(selector)
 	{
 
-		// add wrapper
-		$selector.wrap('<div class="unitform_selector"></div>');
-
-		// add spans for value and arrow
-
+		// add wrapper and spans for value and arrow
+		$(selector).wrap('<div class="unitform_selector"></div>').parent().append('<span>' + $(selector).val() + '</span>');
 
 	}
 
 	// on change (selectbox) - change class and 1st span content
+	
+	function select_onChange(selector)
+	{
+		
+		$(selector).parent().find('span').text($(selector).val());
+		
+	}
 
 	// on change (radio/check) - change class of this if the thing (passed in) un/checked
 
@@ -90,55 +94,44 @@ $.fn.unitform = function(options)
 	----------------------------------------------------------------------------------------------------------*/
 
 	// don't run if none of the elements are on this page
-	if ($this.length)
+	if ($self.length)
 	{
-		
-	//	console.log($this);
 
 		// foreach form element passed in
-		$this.each(function(i)
+		$self.each(function()
 		{
-			
-			// console.log(i);
-			
-			//console.log(this.tagName);
 
 			// if this is a selectbox
-			if (this.tagName === 'SELECT')
+			if ($(this).is('select'))
 			{
 
 				// change markup helper function
 				select_markup(this);
 
 				// bind change helper function to this
-				// this.bind("change", function()
-				// {
-				// });
+				$(this).bind('change', function()
+				{
+					select_onChange(this);
+				});
 				
 			}
-			else if (this.tagName === 'INPUT')
+			else if ($(this).is(':radio'))
 			{
 
-				// else if this is a radio
-				if (this.attr('type') === 'radio')
-				{
+				// change markup helper function
+				radioCheck_markup(this);
 
-					// change markup helper function
-					radioCheck_markup(this);
+				// bind to on change function
 
-					// bind to on change function
+			// else if this is a checkbox
+			}
+			else if ($(this).is(':checkbox'))
+			{
 
-				// else if this is a checkbox
-				}
-				else if (this.attr('type') === 'checkbox')
-				{
+				// change markup helper function
+				radioCheck_markup(this);
 
-					// change markup helper function
-					radioCheck_markup(this);
-
-					// bind to same on change function
-					
-				}
+				// bind to same on change function
 
 			// else (none of the above) 
 			}

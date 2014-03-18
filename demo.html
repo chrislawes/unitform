@@ -3,24 +3,43 @@
 	<head>
 
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width,initial-scale=1">
 
 		<title>unitform demo</title>
+		
+		<style>
+			
+			/* move to less include laters */
+			
+			h1, label{
+				width: 100%;
+				display: block;
+				float: left;
+				clear: both;
+			}
+			
+			.unitform_selector, .unitform_radio, .unitform_checkbox{
+				display: block;
+				float: left;
+				background: green;
+			}
+			
+				.unitform_selector select,
+				.unitform_radio input,
+				.unitform_checkbox input{
+					opacity: 0.4;
+				}
+			
+				.unitform_radio .checked,
+				.unitform_checkbox .checked{
+					background: red;
+				}
+			
+		</style>
 		
 	</head>
 	<body>
 		
 		<form>
-			
-			<h1>Selectboxes</h1>
-			
-			<select>
-				<option>Lorem ipsum</option>
-				<option>dolor sit amet</option>
-				<option>consectetur adipisicing</option>
-				<option>sed do eiusmod tempor</option>
-			</select>
 			
 			<h1>Radios</h1>
 			
@@ -45,6 +64,22 @@
 				<input type="checkbox" id="check2" name="check_test">
 				Check 2
 			</label>
+			
+				<h1>Selectboxes</h1>
+
+				<select>
+					<option>Lorem ipsum</option>
+					<option>dolor sit amet</option>
+					<option>consectetur adipisicing</option>
+					<option>sed do eiusmod tempor</option>
+				</select>
+
+				<select>
+					<option>Lorem</option>
+					<option>dolor</option>
+					<option>consectetur</option>
+					<option>sed do</option>
+				</select>
 			
 		</form>
 		
