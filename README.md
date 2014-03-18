@@ -1,4 +1,4 @@
-unitform
-========
+# Unitform
 
-lightweight form styling jquery plugin
+
+A lightweight form element (select, radio, check) styling jquery plugin.
