@@ -18,20 +18,67 @@ $.fn.unitform = function(options)
 	----------------------------------------------------------------------------------------------------------*/
 	
 	// settings if nothing is passed in from defining plugin
-	var $defaults = {};
+	var defaults = {};
 
 	// use config.var to use user option with defult fallback
-	var $config = $.extend({}, defaults, options);
+	var config = $.extend({}, defaults, options);
 
 	// base settings
-	var $this = $(this.selector);
+	var $self = $(this.selector),
+		inputType;
 
 
 	/*----------------------------------------------------------------------------------------------------------
 		HELPERS
 	----------------------------------------------------------------------------------------------------------*/
 
-	// change radio/check markup function (same, but diffrent class) - check if already checked (on load) and toggle class
+	// change radio/check markup function 
+	// check if already checked (on load) and toggle class
+	// @param {array} selector - jquery selector
+	function radioCheck_markup($selector)
+	{
+
+
+		// define type of element, used for wrapper claass
+		if (this.is(':radio'))
+		{
+			inputType = 'radio';
+		}
+		else
+		{
+			inputType = 'checkbox';
+		}
+
+		// add wrapper
+		$selector.wrap('<div class="unitform_' + inputType + '"></div>');
+
+		// add styleable elements
+		$selector.append('<span>');
+
+		// if it's already checked, add checked class
+		if ($selector.is(':checked'))
+		{
+			$selector.find('> span').addClass('checked');
+		}
+		else
+		{
+			$selector.find('> span').removeClass('checked');
+		}
+
+	}
+
+	// change selectbox markup; add wrapper, span for value (+ span for arrow?)
+	// @param {array} selector - jquery selector
+	function select_markup($selector)
+	{
+
+		// add wrapper
+		$selector.wrap('<div class="unitform_selector"></div>');
+
+		// add spans for value and arrow
+
+
+	}
 
 	// on change (selectbox) - change class and 1st span content
 
@@ -42,32 +89,57 @@ $.fn.unitform = function(options)
 		MAIN PLUGIN
 	----------------------------------------------------------------------------------------------------------*/
 
-	// if $(this.selector) (don't run if none of the elements are on this page)
-	if($this.length)
+	// don't run if none of the elements are on this page
+	if ($self.length)
 	{
-		// foreach "$this"
+
+		// foreach form element passed in
+		$self.each(function()
+		{
 
 			// if this is a selectbox
+			if (this.is('select'))
+			{
 
-				// (change markup) wrapper, span for value (+ span for arrow?)
+				// change markup helper function
+				select_markup(this);
 
 				// bind change helper function to this
+				this.bind("change", function() // bind change outside of document ready?!
+				{
+				});
 
-			// if this is a radio (change markup)
+			// else if this is a radio
+			}
+			else if (this.is(':radio'))
+			{
 
-				// pass in this to change markup helper function
+				// change markup helper function
+				radioCheck_markup(this);
 
 				// bind to on change function
 
-			// if this is a checkbox (change markup)
+			// else if this is a checkbox
+			}
+			else if (this.is(':checkbox'))
+			{
 
-				// pass in this to change markup helper function
+				// change markup helper function
+				radioCheck_markup(this);
 
 				// bind to same on change function
 
 			// else (none of the above) 
+			}
+			else
+			{
 
-				// log error
+				console.log('(selectbox, radio or checkbox only please) what even is ' + this);
+
+			}
+
+		}
+
 	}
 
 
