@@ -32,6 +32,19 @@ $.fn.unitform = function(options)
 		HELPERS
 	----------------------------------------------------------------------------------------------------------*/
 
+	// global helper - check if checked and change parent class
+	function ifChecked(selector)
+	{
+		if ($(selector).is(':checked'))
+		{
+			$(selector).parent('span').addClass('checked');
+		}
+		else
+		{
+			$(selector).parent('span').removeClass('checked');
+		}
+	}
+
 	// change radio/check markup function 
 	// check if already checked (on load) and toggle class
 	// @param {array} selector - jquery selector
@@ -56,14 +69,7 @@ $.fn.unitform = function(options)
 				// $(selector).append('<span>');
 
 		// if it's already checked, add checked class
-		if ($(selector).is(':checked'))
-		{
-			$(selector).parent('span').addClass('checked');
-		}
-		else
-		{
-			$(selector).parent('span').removeClass('checked');
-		}
+		ifChecked(selector)
 
 	}
 
@@ -73,7 +79,7 @@ $.fn.unitform = function(options)
 	{
 
 		// add wrapper and spans for value and arrow
-		$(selector).wrap('<div class="unitform_selector"></div>').parent().append('<span>' + $(selector).val() + '</span>');
+		$(selector).wrap('<div class="unitform_selector"></div>').parent().append('<span>' + $(selector).val() + '</span> <em>Arrow</em>');
 
 	}
 
@@ -86,8 +92,17 @@ $.fn.unitform = function(options)
 		
 	}
 
-	// on change (radio/check) - change class of this if the thing (passed in) un/checked
+	// on change (radio) - change class of this if the thing (passed in) un/checked
+	// remove checked class from all other radios in this group
 
+
+	// on change (checkbox) - change class of this if the thing (passed in) un/checked
+	function check_onChange(selector)
+	{
+
+		ifChecked(selector);
+
+	}
 
 	/*----------------------------------------------------------------------------------------------------------
 		MAIN PLUGIN
@@ -132,13 +147,17 @@ $.fn.unitform = function(options)
 				radioCheck_markup(this);
 
 				// bind to same on change function
+				$(this).bind('change', function()
+				{
+					check_onChange(this);
+				});
 
 			// else (none of the above) 
 			}
 			else
 			{
 
-				console.log('(selectbox, radio or checkbox only please) what even is ' + this);
+				console.log('(selectbox, radio or checkbox only please) what even is ' + $(this));
 
 			}
 
