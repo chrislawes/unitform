@@ -1,4 +1,4 @@
-# Unitform
+# Unitform JS
 
 
 A lightweight form element (select, radio, check) styling jquery plugin.
