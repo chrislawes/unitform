@@ -28,6 +28,7 @@
 					margin: 20px;
 					background: yellow;
 					padding: 5px 40px 4px 10px;
+					/*width: 300px;*/
 				}
 
 					.unitform_selector em{
@@ -47,10 +48,16 @@
 					.unitform_selector select,
 					.unitform_radio input,
 					.unitform_checkbox input{
-						opacity: 0.4;
+						opacity: 0;
 						position: absolute;
 						top: 0; left: 0;
+						bottom: 0; right: 0;
 					}
+					
+						.unitform_selector select{
+							width: 100%;
+							-webkit-appearance: menulist-button;
+						}
 				
 					.unitform_radio .checked,
 					.unitform_checkbox .checked{

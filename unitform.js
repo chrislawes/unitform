@@ -101,8 +101,10 @@ $.fn.unitform = function(options)
 
 		$('input[name=' + thisGroupName +']').each(function()
 		{
-
+			$(this).prop('checked', false).parent('span').removeClass('checked');
 		});
+		
+		$(selector).prop('checked', true).parent('span').addClass('checked');
 
 	}
 
