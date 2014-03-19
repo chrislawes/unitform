@@ -32,7 +32,8 @@ $.fn.unitform = function(options)
 		HELPERS
 	----------------------------------------------------------------------------------------------------------*/
 
-	// global helper - check if checked and change parent class
+	// global helper - check if this selector is checked and change parent class
+	// @param {array} selector - jquery selector
 	function ifChecked(selector)
 	{
 		if ($(selector).is(':checked'))
@@ -46,14 +47,14 @@ $.fn.unitform = function(options)
 	}
 
 	// change radio/check markup function 
-	// check if already checked (on load) and toggle class
+	// use: check if already checked (on load) and toggle class
+	// use: bind to click to toggle active class
 	// @param {array} selector - jquery selector
 	function radioCheck_markup(selector)
 	{
 
-
 		// define type of element, used for wrapper claass
-		if ($(this).is(':radio'))
+		if ($(selector).is(':radio'))
 		{
 			inputType = 'radio';
 		}
@@ -65,9 +66,6 @@ $.fn.unitform = function(options)
 		// add wrapper
 		$(selector).wrap('<div class="unitform_' + inputType + '"><span></span></div>');
 
-		// add styleable elements		// 
-				// $(selector).append('<span>');
-
 		// if it's already checked, add checked class
 		ifChecked(selector)
 
@@ -78,32 +76,37 @@ $.fn.unitform = function(options)
 	function select_markup(selector)
 	{
 
-		// add wrapper and spans for value and arrow
+		// add wrapper and spans for value (and em for arrow)
 		$(selector).wrap('<div class="unitform_selector"></div>').parent().append('<span>' + $(selector).val() + '</span> <em>Arrow</em>');
 
 	}
 
 	// on change (selectbox) - change class and 1st span content
-	
+	// @param {array} selector - jquery selector
 	function select_onChange(selector)
 	{
 		
+		// find new value, pass to parents span
 		$(selector).parent().find('span').text($(selector).val());
 		
 	}
 
 	// on change (radio) - change class of this if the thing (passed in) un/checked
 	// remove checked class from all other radios in this group
+	// @param {array} selector - jquery selector
 	function radio_onChange(selector)
 	{
 
+		// find the group this radio belongs to (via their shared name)
 		var thisGroupName = $(selector).attr('name');
 
-		$('input[name=' + thisGroupName +']').each(function()
+		// loop all radios with this name, uncheck and remove active class
+		$('input:radio[name=' + thisGroupName +']').each(function()
 		{
 			$(this).prop('checked', false).parent('span').removeClass('checked');
 		});
 		
+		// add active class to the one clicked
 		$(selector).prop('checked', true).parent('span').addClass('checked');
 
 	}
@@ -112,12 +115,13 @@ $.fn.unitform = function(options)
 	function check_onChange(selector)
 	{
 
+		// run if checked helper function
 		ifChecked(selector);
 
 	}
 
 	/*----------------------------------------------------------------------------------------------------------
-		MAIN PLUGIN
+		MAIN PLUG-IN
 	----------------------------------------------------------------------------------------------------------*/
 
 	// don't run if none of the elements are on this page
@@ -167,14 +171,7 @@ $.fn.unitform = function(options)
 				{
 					check_onChange(this);
 				});
-
-			// else (none of the above) 
-			}
-			else
-			{
-
-				console.log('(selectbox, radio or checkbox only please) what even is ' + $(this));
-
+			
 			}
 
 		});
