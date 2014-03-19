@@ -8,20 +8,13 @@
 
 --------------------------------------------------------------------------------------------------------------*/
 
-$.fn.unitform = function(options)
-// @param {array} options - accept settings from plugin defining
+$.fn.unitform = function()
 {
 
 
 	/*----------------------------------------------------------------------------------------------------------
 		SETTINGS
 	----------------------------------------------------------------------------------------------------------*/
-	
-	// settings if nothing is passed in from defining plugin
-	var defaults = {};
-
-	// use config.var to use user option with defult fallback
-	var config = $.extend({}, defaults, options);
 
 	// base settings
 	var $self = $(this.selector),
@@ -67,7 +60,7 @@ $.fn.unitform = function(options)
 		$(selector).wrap('<div class="unitform_' + inputType + '"><span></span></div>');
 
 		// if it's already checked, add checked class
-		ifChecked(selector)
+		ifChecked(selector);
 
 	}
 
@@ -77,7 +70,7 @@ $.fn.unitform = function(options)
 	{
 
 		// add wrapper and spans for value (and em for arrow)
-		$(selector).wrap('<div class="unitform_selector"></div>').parent().append('<span>' + $(selector).val() + '</span> <em>Arrow</em>');
+		$(selector).wrap('<div class="unitform_select"></div>').parent().append('<span>' + $(selector).val() + '</span> <em>Arrow</em>');
 
 	}
 
