@@ -94,7 +94,17 @@ $.fn.unitform = function(options)
 
 	// on change (radio) - change class of this if the thing (passed in) un/checked
 	// remove checked class from all other radios in this group
+	function radio_onChange(selector)
+	{
 
+		var thisGroupName = $(selector).attr('name');
+
+		$('input[name=' + thisGroupName +']').each(function()
+		{
+
+		});
+
+	}
 
 	// on change (checkbox) - change class of this if the thing (passed in) un/checked
 	function check_onChange(selector)
@@ -137,6 +147,10 @@ $.fn.unitform = function(options)
 				radioCheck_markup(this);
 
 				// bind to on change function
+				$(this).bind('change', function()
+				{
+					radio_onChange(this);
+				});
 
 			// else if this is a checkbox
 			}
