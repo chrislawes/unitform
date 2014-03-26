@@ -6,69 +6,32 @@
 
 		<title>unitform demo</title>
 		
+		<!-- reset stylesheet; demo only -->
+		<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+		
+		<!-- unitform styles -->
+		<link rel="stylesheet" href="unitform.css">
+		
 		<style>
-			
-			/* move to less include laters */
-			
-			h1, h2, label{
-				width: 100%;
-				display: block;
-				float: left;
-				clear: both;
+			/* demo only styles: don't use these */
+			body{
+				font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", 
+								 "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", 
+								 "Arial", sans-serif; 
+				font-weight: 400; font-stretch: normal;
+				font-size: 13px; line-height: 16px;
+				display: block; margin: 20px auto;
+				width: 90%;
 			}
-			
-			.unitform_select, .unitform_radio, .unitform_checkbox{
-				position: relative;
-				display: block;
-				float: left;
-				background: green;
+			ul, li, h1, h2{
+				display: block; float: left;
+				width: 100%; clear: both;
+				margin: 20px 0; padding: 0;
 			}
-			
-				.unitform_radio{
-					border-radius: 100%;
-					overflow: hidden;
+				li{
+					margin: 0;
+					padding-bottom: 15px;
 				}
-
-				.unitform_select{
-					margin: 20px 10px 20px 0;
-					background: yellow;
-					padding: 5px 40px 4px 10px;
-					/*width: 300px;*/
-				}
-
-					.unitform_select em{
-						position: absolute;
-						top: 5px; right: 5px;
-						width: 10px; height: 10px;
-						text-indent: -999px; overflow: hidden;
-						background: red;
-					}
-
-				.unitform_radio, .unitform_checkbox,
-				.unitform_radio span, .unitform_checkbox span{
-					display: block; float: left;
-					width: 20px; height: 20px;
-				}
-			
-					.unitform_select select,
-					.unitform_radio input,
-					.unitform_checkbox input{
-						opacity: 0;
-						position: absolute;
-						top: 0; left: 0;
-						bottom: 0; right: 0;
-					}
-					
-						.unitform_select select{
-							width: 100%;
-							-webkit-appearance: menulist-button;
-						}
-				
-					.unitform_radio .checked,
-					.unitform_checkbox .checked{
-						background: red;
-					}
-			
 		</style>
 		
 	</head>
@@ -79,56 +42,99 @@
 		<form>
 
 			<h2>Select</h2>
+			
+			<ul>
+				
+				<li>
 
-			<select>
-				<option>Lorem ipsum</option>
-				<option>dolor sit amet</option>
-				<option>consectetur adipisicing</option>
-				<option>sed do eiusmod tempor</option>
-			</select>
+					<select>
+						<option>Lorem ipsum</option>
+						<option>dolor sit amet</option>
+						<option>consectetur adipisicing</option>
+						<option>sed do eiusmod tempor</option>
+					</select>
 
-			<select>
-				<option>Lorem</option>
-				<option>dolor</option>
-				<option>consectetur</option>
-				<option>sed do</option>
-			</select>
+				</li>
+				
+				<li>
+
+					<select>
+						<option>Lorem</option>
+						<option>dolor</option>
+						<option>consectetur</option>
+						<option>sed do</option>
+					</select>
+			
+				</li>
+			
+			</ul>
 			
 			<h2>Radio</h2>
 			
-			<label for="radio1">
-				<input type="radio" id="radio1" name="radio_test" checked>
-				Radio 1
-			</label>
+			<ul>
+				
+				<li>
 			
-			<label for="radio2">
-				<input type="radio" id="radio2" name="radio_test">
-				Radio 2
-			</label>
+					<label for="radio1">
+						<input type="radio" id="radio1" name="radio_test" checked>
+						Radio 1
+					</label>
+					
+				</li>
+				
+				<li>
+			
+					<label for="radio2">
+						<input type="radio" id="radio2" name="radio_test">
+						Radio 2
+					</label>
+					
+				</li>
+				
+				<li>
 
-			<label for="radio3">
-				<input type="radio" id="radio3" name="radio_test">
-				Radio 3
-			</label>
+					<label for="radio3">
+						<input type="radio" id="radio3" name="radio_test">
+						Radio 3
+					</label>
+					
+				</li>
+					
+			</ul>
 			
 			<h2>Check</h2>
 			
-			<label for="check1">
-				<input type="checkbox" id="check1" name="check_test" checked>
-				Check 1
-			</label>
+			<ul>
+				
+				<li>
 			
-			<label for="check2">
-				<input type="checkbox" id="check2" name="check_test">
-				Check 2
-			</label>
+					<label for="check1">
+						<input type="checkbox" id="check1" name="check_test" checked>
+						Check 1
+					</label>
+					
+				</li>
+				
+				<li>
+			
+					<label for="check2">
+						<input type="checkbox" id="check2" name="check_test">
+						Check 2
+					</label>
+					
+				</li>
+			
+			</ul>
 			
 		</form>
 		
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<!-- include jQuery -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		
-		<script src="unitform.js"></script>
+		<!-- include Unitform Plugin -->
+		<script src="unitform.min.js"></script>
 		
+		<!-- run plugin on document ready -->
 		<script>
 		
 			$(document).ready(function(){
