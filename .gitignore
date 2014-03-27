@@ -1,3 +1,5 @@
 .DS_Store, *.codekit, config.codekit
 
 *.codekit
+
+.DS_Store
