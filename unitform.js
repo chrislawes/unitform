@@ -71,6 +71,16 @@ $.fn.unitform = function()
 
 		// add wrapper and spans for value (and em for arrow)
 		$(selector).wrap('<div class="unitform_select"></div>').parent().append('<span>' + $(selector).val() + '</span> <em>Arrow</em>');
+		
+		// pinch any class names on the select
+		// remove, and put them on the new 'unitform_select' wrapper
+		
+		var thisSelectClass = $(selector).attr('class');
+		
+		if (thisSelectClass)
+		{
+			$(selector).removeClass(thisSelectClass).parent('.unitform_select').addClass(thisSelectClass);
+		}
 
 	}
 
