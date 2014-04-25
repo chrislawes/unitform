@@ -70,7 +70,7 @@ $.fn.unitform = function()
 	{
 
 		// add wrapper and spans for value (and em for arrow)
-		$(selector).wrap('<div class="unitform_select"></div>').parent().append('<span>' + $(selector).find('option:selected').text() + '</span> <em>1 Arrow</em>');
+		$(selector).wrap('<div class="unitform_select"></div>').parent().append('<span>' + $(selector).find('option:selected').text() + '</span> <em>Arrow</em>');
 
 		// $("#yourdropdownid option:selected").text();
 		
