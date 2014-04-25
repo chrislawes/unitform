@@ -90,7 +90,7 @@ $.fn.unitform = function()
 	{
 		
 		// find new value, pass to parents span
-		$(selector).parent().find('span').text($(selector).val());
+		$(selector).parent().find('span').text($(selector).html());
 		
 	}
 
