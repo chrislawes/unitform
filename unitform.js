@@ -87,7 +87,7 @@ $.fn.unitform = function()
     
     if($(selector).attr('disabled')) 
     {
-    	$(selector).parent.addClass('disabled');
+    	$(selector).parent().addClass('disabled');
     }
 
   }
