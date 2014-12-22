@@ -4,141 +4,206 @@
 
 		<meta charset="utf-8">
 
-		<title>unitform demo</title>
+		<title>Unitform JS | Demo</title>
 		
-		<!-- reset stylesheet; demo only -->
-		<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
-		
-		<!-- unitform styles -->
-		<link rel="stylesheet" href="unitform.css">
-		
+
+		<!-- DEMO PAGE styles only: don't use these  -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<style>
-			/* demo page styles only: don't use these */
+		
+			*{margin: 0; padding: 0;}
+
 			body{
-				font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", 
-								 "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", 
-								 "Arial", sans-serif; 
+				font-family: 'Open Sans', sans-serif;
+				background: #f0f0f0;
 				font-weight: 400; font-stretch: normal;
 				font-size: 13px; line-height: 16px;
-				display: block; margin: 20px auto;
-				width: 90%;
 			}
-			ul, li, h1, h2{
-				display: block; float: left;
-				width: 100%; clear: both;
-				margin: 20px 0; padding: 0;
-			}
-				li{
-					margin: 0;
-					padding-bottom: 15px;
+				.demo_wrapper{
+					display: block;
+					margin: 0 auto;
+					width: 800px; max-width: 90%;
 				}
+					form, ul, li, h1, h2{
+						display: block; float: left;
+						width: 100%; clear: both;
+						margin: 20px 0; padding: 0;
+					}
+						form{
+							background: #fff;
+							border-radius: 6px;
+							padding: 10px 0;
+						}
+						h1{
+							background: #e8e8e8;
+							border-bottom: 1px solid #fff;
+							padding: 30px 0; margin: 0;
+							text-align: center;
+						}
+						ul, h2{
+							width: 90%;
+							padding-left: 5%; padding-right: 5%;
+						}
+						li{
+							margin: 0;
+							padding-bottom: 15px;
+						}
+					footer{
+						background: #e8e8e8;
+						display: block; float: left;
+						width: 100%; clear: both;
+						margin: 20px 0 0 0; padding: 30px 0;
+						border-top: 1px solid #fff;
+						text-align: center;
+					}
+						footer a{
+							color: #2574A9;
+						}
+							footer a:hover{
+								text-decoration: none;
+							}
+
 		</style>
+		<!-- end DEMO PAGE -->
+
+
+
+		<!-- unitform styles -->
+		<link rel="stylesheet" href="unitform.css">
 		
 	</head>
 	<body>
 
 		<h1>Unitform JS</h1>
+
+		<div class="demo_wrapper">
 		
-		<form>
+			<form>
 
-			<h2>Select</h2>
-			
-			<ul>
+				<h2>Select</h2>
 				
-				<li>
+				<ul>
+					
+					<li>
 
-					<select>
-						<option value="1">Lorem ipsum</option>
-						<option value="2">dolor sit amet</option>
-						<option value="3">consectetur adipisicing</option>
-						<option value="4">ed do eiusmod tempor</option>
-					</select>
+						<select>
+							<option value="1">Lorem ipsum</option>
+							<option value="2">dolor sit amet</option>
+							<option value="3">consectetur adipisicing</option>
+							<option value="4">ed do eiusmod tempor</option>
+						</select>
 
-				</li>
-				
-				<li>
+					</li>
+					
+					<li>
 
-					<select>
-						<option>Lorem</option>
-						<option>dolor</option>
-						<option>consectetur</option>
-						<option>sed do</option>
-					</select>
-			
-				</li>
-			
-			</ul>
-			
-			<h2>Radio</h2>
-			
-			<ul>
+						<select>
+							<option>Lorem</option>
+							<option>dolor</option>
+							<option>consectetur</option>
+							<option>sed do</option>
+						</select>
 				
-				<li>
-			
-					<label for="radio1">
-						<input type="radio" id="radio1" name="radio_test" checked>
-						Radio 1
-					</label>
+					</li>
+				
+				</ul>
+				
+				<h2>Radio</h2>
+				
+				<ul>
 					
-				</li>
+					<li>
 				
-				<li>
-			
-					<label for="radio2">
-						<input type="radio" id="radio2" name="radio_test">
-						Radio 2
-					</label>
+						<label for="radio1">
+							<input type="radio" id="radio1" name="radio_test" checked>
+							Radio 1
+						</label>
+						
+					</li>
 					
-				</li>
+					<li>
 				
-				<li>
+						<label for="radio2">
+							<input type="radio" id="radio2" name="radio_test">
+							Radio 2
+						</label>
+						
+					</li>
+					
+					<li>
 
-					<label for="radio3">
-						<input type="radio" id="radio3" name="radio_test">
-						Radio 3
-					</label>
-					
-				</li>
-					
-			</ul>
-			
-			<h2>Check</h2>
-			
-			<ul>
+						<label for="radio3">
+							<input type="radio" id="radio3" name="radio_test">
+							Radio 3
+						</label>
+						
+					</li>
+						
+				</ul>
 				
-				<li>
-			
-					<label for="check1">
-						<input type="checkbox" id="check1" name="check_test" checked>
-						Check 1
-					</label>
-					
-				</li>
+				<h2>Checkbox</h2>
 				
-				<li>
-			
-					<label for="check2">
-						<input type="checkbox" id="check2" name="check_test">
-						Check 2
-					</label>
+				<ul>
 					
-				</li>
+					<li>
+				
+						<label for="check1">
+							<input type="checkbox" id="check1" name="check_test" checked>
+							Check 1
+						</label>
+						
+					</li>
+					
+					<li>
+				
+						<label for="check2">
+							<input type="checkbox" id="check2" name="check_test">
+							Check 2
+						</label>
+						
+					</li>
 
-				<li>
+					<li>
+				
+						<label for="check3">
+							<input type="checkbox" id="check3" name="check_test">
+							Check 3
+						</label>
+						
+					</li>
+				
+				</ul>
+
+				<h2>File Upload</h2>
+
+				<ul>
+
+					<li>
+
+						<input type="file" name="file1" id="file1">
+
+					</li>
+
+					<li>
+
+						<input type="file" name="file2" id="file2">
+
+					</li>
+
+				</ul>
+				
+			</form>
+
+		</div><!-- .demo_wrapper -->
+
+		<footer>
 			
-					<label for="check2">
-						<input type="checkbox" id="check3" name="check_test">
-						Check 3
-					</label>
-					
-				</li>
-			
-			</ul>
-			
-		</form>
+			Unitform on <a href="https://github.com/theunitteam/unitform" title="Unitform on GitHub" target="_blank">Github</a>
+
+		</footer>
 		
 		<!-- include jQuery -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		
 		<!-- include Unitform Plugin -->
 		<script src="unitform.min.js"></script>
@@ -148,7 +213,7 @@
 		
 			$(document).ready(function(){
 
-				$('select, input[type="radio"], input[type="checkbox"]').unitform();
+				$('select, div#woop, input[type="radio"], input[type="checkbox"], input[type="file"]').unitform();
 			
 			});
 
