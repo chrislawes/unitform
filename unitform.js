@@ -16,8 +16,7 @@ $.fn.unitform = function(options)
 
 	----------------------------------------------------------------------------------------------------------*/
 
-	var $self = $(this.selector),
-		inputType;
+	var $self = $(this.selector);
 
 	// defaults (fallback values if nothing is passed in from defining plugin)
 	var defaults = {
@@ -133,18 +132,8 @@ $.fn.unitform = function(options)
 		radio_markup: function(selector)
 		{
 
-			// define type of element, used for wrapper claass
-			if ($(selector).is(':radio'))
-			{
-				inputType = 'radio';
-			}
-			else
-			{
-				inputType = 'checkbox';
-			}
-
 			// add wrapper
-			$(selector).wrap('<div class="unitform_' + inputType + '"><span></span></div>');
+			$(selector).wrap('<div class="unitform_radio"><span></span></div>');
 
 			// if it's already checked, add checked class
 			HELPER.ifChecked(selector);
@@ -185,18 +174,8 @@ $.fn.unitform = function(options)
 
 		checkbox_markup: function(selector){
 
-			// define type of element, used for wrapper claass
-			if ($(selector).is(':radio'))
-			{
-				inputType = 'radio';
-			}
-			else
-			{
-				inputType = 'checkbox';
-			}
-
 			// add wrapper
-			$(selector).wrap('<div class="unitform_' + inputType + '"><span></span></div>');
+			$(selector).wrap('<div class="unitform_checkbox"><span></span></div>');
 
 			// if it's already checked, add checked class
 			HELPER.ifChecked(selector);
