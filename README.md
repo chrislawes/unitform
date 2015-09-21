@@ -7,6 +7,10 @@ Style HTML forms with CSS.
 
 ### Install
 
+<code>bower install --save-dev unitform</code>
+
+*OR*
+
 Include <code>unitform.min.js</code>, include <code>unitform.css</code>, define plugin (see below). 
 
 ### How do define?

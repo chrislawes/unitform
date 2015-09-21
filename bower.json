@@ -1,0 +1,28 @@
+{
+  "name": "unitform",
+  "description": "A lightweight Form element (Select, Radio, Checkbox, File) Styling jQuery Plugin. Style HTML forms with CSS.",
+  "main": [
+    "unitform.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:theunitteam/unitform.git"
+  },
+  "dependencies": {
+    "jquery": "~2.1.4"
+  },
+  "moduleType": [
+    "jquery"
+  ],
+  "keywords": [
+    "form",
+    "styling"
+  ],
+  "authors": [
+    "Chris Lawes <chris.lawes@theunit.co.uk>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ]
+}
