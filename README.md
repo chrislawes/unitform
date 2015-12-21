@@ -1,6 +1,5 @@
 # Unitform JS <code>v2</code>
 
-
 A lightweight Form element (Select, Radio, Checkbox, File upload) Styling jQuery Plugin.
 
 Style HTML forms with CSS.

@@ -3,7 +3,7 @@
 
 	JQuery Unitform Plug-in (v2.0)
 
-	by Chris Lawes
+		by Chris Lawes
 
 --------------------------------------------------------------------------------------------------------------*/
 
@@ -20,8 +20,8 @@ $.fn.unitform = function(options)
 
 	// defaults (fallback values if nothing is passed in from defining plugin)
 	var defaults = {
-		fileHelperText : 'No File Selected.',
-		fileHelperButton : 'Upload'
+		fileHelperText 		: 'No File Selected.',
+		fileHelperButton 	: 'Upload'
 	};
 
 	// use config.var to use user option with defult fallback
@@ -37,15 +37,28 @@ $.fn.unitform = function(options)
 
 		// global helper - check if this selector is checked and change parent class
 		// @param {array} selector - jquery selector
+		// called on radios and checkboxes
 		ifChecked: function(selector)
 		{
 			if ($(selector).is(':checked'))
 			{
 				$(selector).parent('span').addClass('checked');
+
+				// if this element is inside a "label" tag,
+				// add a class to that label
+				if ($(selector).parents('label').length == 1)
+				{
+					$(selector).parents('label').addClass('unitform_label');
+				}
 			}
 			else
 			{
 				$(selector).parent('span').removeClass('checked');
+
+				if ($(selector).parents('label').length == 1)
+				{
+					$(selector).parents('label').removeClass('unitform_label');
+				}
 			}
 		},
 
@@ -156,13 +169,17 @@ $.fn.unitform = function(options)
 				// loop all radios with this name, uncheck and remove active class
 				$('input:radio[name=' + thisGroupName +']').each(function()
 				{
-					$(this).prop('checked', false).parent('span').removeClass('checked');
+					$(this)
+						.prop('checked', false).parent('span').removeClass('checked')
+						.parents('label').removeClass('unitform_label');
 				});
 
 			}
 
 			// add active class to the one clicked
-			$(selector).prop('checked', true).parent('span').addClass('checked');
+			$(selector)
+				.prop('checked', true).parent('span').addClass('checked')
+				.parents('label').addClass('unitform_label');
 
 		},
 
