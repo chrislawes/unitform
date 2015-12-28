@@ -10,9 +10,9 @@ Style HTML forms with CSS.
 
 *OR*
 
-Include <code>unitform.min.js</code>, include <code>unitform.css</code>, define plugin (see below). 
+Download, then include <code>unitform.min.js</code>, and <code>unitform.css</code>, then define plugin (see below).
 
-### How do define?
+### Use
 
 To add Unitform to one selectbox:
 
@@ -37,6 +37,4 @@ $('input[type="file"]').unitform({
 
 ### Style
 
-<code>unitform.less</code> - For use with the [FE Baseplate](https://github.com/wahnbriefe/front-end-baseplate)
-
-<code>unitform.css</code> - (min) can be included anywhere as base theme
+<code>unitform.css</code> - base theme

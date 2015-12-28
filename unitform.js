@@ -1,7 +1,7 @@
 
 /*--------------------------------------------------------------------------------------------------------------
 
-	JQuery Unitform Plug-in (v2.0)
+	JQuery Unitform Plug-in (v2.1)
 
 		by Chris Lawes
 
@@ -40,8 +40,10 @@ $.fn.unitform = function(options)
 		// called on radios and checkboxes
 		ifChecked: function(selector)
 		{
+
 			if ($(selector).is(':checked'))
 			{
+
 				$(selector).parent('span').addClass('checked');
 
 				// if this element is inside a "label" tag,
@@ -50,28 +52,38 @@ $.fn.unitform = function(options)
 				{
 					$(selector).parents('label').addClass('unitform_label');
 				}
+
 			}
 			else
 			{
+
 				$(selector).parent('span').removeClass('checked');
 
+				// if this element is inside a "label" tag,
+				// remove a class to that label
 				if ($(selector).parents('label').length == 1)
 				{
 					$(selector).parents('label').removeClass('unitform_label');
 				}
+
 			}
+
 		},
 
 		// global helper for focus class on form elements
 		onFocus: function(selector)
 		{
+
 			$(selector).parent('div').addClass('unitform_focus');
+		
 		},
 
 		// global helper to remove focus class on form elements
 		onBlur: function(selector)
 		{
+
 			$(selector).parent('div').removeClass('unitform_focus');
+		
 		}
 
 	};
@@ -110,14 +122,14 @@ $.fn.unitform = function(options)
 
 			if (thisSelectClass)
 			{
-				$(selector).removeClass(thisSelectClass).parent('.unitform_select').addClass(thisSelectClass);
+				$(selector).removeClass( thisSelectClass ).parent('.unitform_select').addClass( thisSelectClass );
 			}
 
 			// move disabled attribute if present
 
 			if($(selector).attr('disabled')) 
 			{
-				$(selector).parent().addClass('disabled');
+				$(selector).parent().addClass('unitform_disabled');
 			}
 
 		},
@@ -128,7 +140,7 @@ $.fn.unitform = function(options)
 		{
 
 			// find new value, pass to parents span
-			$(selector).parent().find('span').html($(selector).find('option:selected').text());
+			$(selector).parent().find('span').html( $(selector).find('option:selected').text() );
 
 		},
 
@@ -170,16 +182,25 @@ $.fn.unitform = function(options)
 				$('input:radio[name=' + thisGroupName +']').each(function()
 				{
 					$(this)
-						.prop('checked', false).parent('span').removeClass('checked')
-						.parents('label').removeClass('unitform_label');
+						.prop('checked', false).parent('span').removeClass('checked');
+
+					if ($(this).parents('label').length == 1)
+					{
+						$(this).parents('label').removeClass('unitform_label');
+					}
+
 				});
 
 			}
 
 			// add active class to the one clicked
 			$(selector)
-				.prop('checked', true).parent('span').addClass('checked')
-				.parents('label').addClass('unitform_label');
+				.prop('checked', true).parent('span').addClass('checked');
+
+			if ($(selector).parents('label').length == 1)
+			{
+				$(selector).parents('label').addClass('unitform_label');
+			}
 
 		},
 
@@ -224,7 +245,9 @@ $.fn.unitform = function(options)
 		// update new span tag with value (file name) when one is added
 		file_onChange: function(selector){
 
-			$(selector).parent().find('span').text($(selector).val());
+			var uploadFileName = $(selector).val().split('/').pop(); // get this file name, without "fake/path/"
+
+			$(selector).parent().find('span').text( uploadFileName );
 
 		}
 
@@ -258,7 +281,7 @@ $.fn.unitform = function(options)
 			// bind change form function to this
 			$(this).bind('change', function()
 			{
-				FORM[typeName + '_onChange'](this);
+				FORM[typeName + '_onChange'](this); // find helper using the name of this element
 			});
 
 			// bind focus helper function to this
@@ -267,16 +290,15 @@ $.fn.unitform = function(options)
 				HELPER.onFocus(this);
 			});
 
-			// bnd blur helper function to this
+			// bind blur helper function to this
 			$(this).bind('blur', function()
 			{
 				HELPER.onBlur(this);
 			});
 
-		});
+		}); // end; each element
 
 	} // end; if length
 
 
 }; // End; unitform plug-in
-
