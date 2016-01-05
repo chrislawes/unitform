@@ -84,6 +84,33 @@ $.fn.unitform = function(options)
 
 			$(selector).parent('div').removeClass('unitform_focus');
 		
+		},
+
+		// pinch any class names on the select
+		// remove, and put them on the new 'unitform_select' wrapper
+		moveClass: function(selector)
+		{
+			
+			// grab the class to carry up
+			var thisSelectClass = $(selector).attr('class');
+
+			// if we have something to carry
+			if (thisSelectClass)
+			{
+				// assume we're in a div (.unitform_*)
+				var wrapperType = 'div';
+
+				// if it's inside a label, add them to that
+				if ($(selector).parents('label').length == 1)
+				{
+					wrapperType = 'label';
+				}
+				
+				// remove from this, add to something else
+				$(selector).removeClass( thisSelectClass ).parent().closest( wrapperType ).addClass( thisSelectClass );
+				
+			}
+
 		}
 
 	};
@@ -115,15 +142,8 @@ $.fn.unitform = function(options)
 			// add wrapper and spans for value (and em for arrow)
 			$(selector).wrap('<div class="unitform_select"></div>').parent().append('<span>' + $(selector).find('option:selected').text() + '</span> <em>Arrow</em>');
 
-			// pinch any class names on the select
-			// remove, and put them on the new 'unitform_select' wrapper
-
-			var thisSelectClass = $(selector).attr('class');
-
-			if (thisSelectClass)
-			{
-				$(selector).removeClass( thisSelectClass ).parent('.unitform_select').addClass( thisSelectClass );
-			}
+			// keep element class (move from form element, to html wrapper)
+			HELPER.moveClass(selector);
 
 			// move disabled attribute if present
 
@@ -162,6 +182,9 @@ $.fn.unitform = function(options)
 
 			// if it's already checked, add checked class
 			HELPER.ifChecked(selector);
+
+			// keep element class (move from form element, to html wrapper)
+			HELPER.moveClass(selector);
 
 		},
 
@@ -217,6 +240,9 @@ $.fn.unitform = function(options)
 
 			// if it's already checked, add checked class
 			HELPER.ifChecked(selector);
+
+			// keep element class (move from form element, to html wrapper)
+			HELPER.moveClass(selector);
 
 		},
 

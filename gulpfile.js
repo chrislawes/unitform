@@ -22,7 +22,7 @@ gulp.task('less', function ()
 {
 	gulp.src('*.less')
 		.pipe( less({ compress: false }) )
-		.pipe( gulp.dest('/') );
+		.pipe( gulp.dest('dist') );
 });
 
 
@@ -30,9 +30,9 @@ gulp.task('less', function ()
 
 gulp.task('js', function()
 {
-	gulp.src('*.js')
+	gulp.src('unitform.js')
 		.pipe( uglify() )
-		.pipe( gulp.dest('*.min.js') );
+		.pipe( gulp.dest('dist') );
 });
 
 

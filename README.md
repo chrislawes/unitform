@@ -1,4 +1,4 @@
-# Unitform JS <code>v2</code>
+# Unitform JS <code>v2.1</code>
 
 A lightweight Form element (Select, Radio, Checkbox, File upload) Styling jQuery Plugin.
 
